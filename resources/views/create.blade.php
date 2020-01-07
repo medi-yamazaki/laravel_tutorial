@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Todo　Index</title>
+        <title>Todo　Create</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -30,23 +30,26 @@
 
             <div class="content todoContainer">
                 <div class="title m-b-md">
-                    Todo
+                    Create
                 </div>
 
-                <form class="todoForm">
-                    <!-- @foreach ($users as $user)
-                        {{ $user->name }}
-                    @endforeach -->
+                <form action="{{ route('create') }}" method="POST" class="todoForm">
+                    {{ csrf_field() }}
 
-                    <ul class="todoList">
-                        @foreach ($todos as $todo)
-                        <li>
-                            <input type="checkbox" class="form-check-input" id="exampleCheck{{$todo->user_id}}">
-                            <label class="form-check-label" for="exampleCheck{{$todo->user_id}}">{{$todo->title}}</label>
-                        </li>
-                        @endforeach
-                    </ul>
-                    <a href="/create" class="btn btn-primary">Create</a>
+                    <dl class="formDl">
+                        <dt>タイトル</dt>
+                        <dd>
+                            <input type="text" class="form-control" id="todoTitle">
+                            <small class="form-text textError"></small>
+                        </dd>
+
+                        <dt>内容</dt>
+                        <dd>
+                            <textarea class="form-control" id="textarea" rows="3"></textarea>
+                            <small class="form-text textError"></small>
+                        </dd>
+                    </dl>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
 
             </div>

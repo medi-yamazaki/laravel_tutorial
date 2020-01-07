@@ -30,10 +30,19 @@ class TodoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
-        return view('store');
+        return view('create');
+    }
+
+    public function create(Request $request)
+    {
+        $todo = new Todo();
+
+        $todo->title = $request->title;
+        $todo->description = $request->description;
+        $todo->save();
+        return redirect()->route('index');
     }
 
     /**

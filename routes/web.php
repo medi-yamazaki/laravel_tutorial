@@ -12,7 +12,8 @@
 */
 
 Route::get('/', 'TodoController@index');
-Route::get('/add', 'TodoController@store');
+Route::get('/create', 'TodoController@store')->name('create');
+Route::post('/create', 'TodoController@create');
 Route::get('/login', function () {
     return view('login');
 });
