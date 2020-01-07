@@ -6,3 +6,128 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+html, body {
+    background-color: #fff;
+    color: #636b6f;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    font-size: 1.4rem;
+    height: 100vh;
+    margin: 0;
+}
+html {
+    font-size: 62.5%;
+}
+ol, ul, li {
+	list-style: none;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.content {
+    text-align: center;
+}
+
+.title {
+    font-size: 84px;
+}
+
+.links > a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.m-b-md {
+    margin-bottom: 30px;
+}
+
+.todoContainer {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 500px;
+}
+
+.todoForm {
+    $contentMB: 40px;
+    .todoList {
+        display: inline-block;
+        margin: 0 auto $contentMB;
+        padding: 0;
+        position: relative;
+        width: 100%;
+        text-align: left;
+
+        li {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-justify-content: flex-start;
+            justify-content: flex-start;
+            -webkit-align-content: flex-start;
+            align-content: flex-start;
+            -webkit-flex-flow: row wrap;
+            flex-flow: row wrap;
+            -webkit-align-items: flex-start;
+            align-items: flex-start;
+            position: relative;
+            padding: 0 0 0 20px;
+        }
+    }
+
+    .form-check-input {
+        width: 14px;
+        height: 14px;
+        top: 50%;
+        left: 0;
+        margin-top: -7px;
+        margin-left: 0;
+    }
+    .form-check-label {
+        line-height: 1.3;
+    }
+
+    .btn-primary {
+        font-size: 1.4rem;
+        min-width: 100px;
+    }
+
+    .formDl {
+        margin-bottom: $contentMB;
+        dd:not(:last-of-type) {
+            margin-bottom: 10px;
+        }
+        dd:last-of-type {
+            margin-bottom: 0px;
+        }
+    }
+
+    .form-text {
+        margin-top: 5px;
+        &.textError {
+            color: #f00;
+        }
+    }
+}
