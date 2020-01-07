@@ -11,10 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    // return view('welcome');
-    return view('index');
-});
+Route::get('/', 'TodoController@index');
+Route::get('/add', 'TodoController@store');
 Route::get('/login', function () {
     return view('login');
 });

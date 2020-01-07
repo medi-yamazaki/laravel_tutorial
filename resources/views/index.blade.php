@@ -34,11 +34,17 @@
                 </div>
 
                 <form class="todoForm">
+                    <!-- @foreach ($users as $user)
+                        {{ $user->name }}
+                    @endforeach -->
+
                     <ul class="todoList">
+                        @foreach ($todos as $todo)
                         <li>
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            <input type="checkbox" class="form-check-input" id="exampleCheck{{$todo->user_id}}">
+                            <label class="form-check-label" for="exampleCheck{{$todo->user_id}}">{{$todo->title}}</label>
                         </li>
+                        @endforeach
                     </ul>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

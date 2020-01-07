@@ -11453,6 +11453,10 @@ li {
   padding: 0 0 0 20px;
 }
 
+.todoForm .todoList li:not(:last-of-type) {
+  margin-bottom: 10px;
+}
+
 .todoForm .form-check-input {
   width: 14px;
   height: 14px;
@@ -11475,8 +11479,12 @@ li {
   margin-bottom: 40px;
 }
 
+.todoForm .formDl dt:not(:last-of-type) {
+  margin-bottom: 5px;
+}
+
 .todoForm .formDl dd:not(:last-of-type) {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .todoForm .formDl dd:last-of-type {
