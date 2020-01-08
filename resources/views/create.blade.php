@@ -39,17 +39,22 @@
                     <dl class="formDl">
                         <dt>タイトル</dt>
                         <dd>
-                            <input type="text" class="form-control" id="todoTitle">
-                            <small class="form-text textError"></small>
+                            <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}"/>
+                            @error('title')
+                            <small class="form-text textError">{{$message}}</small>
+                            @enderror
                         </dd>
 
                         <dt>内容</dt>
                         <dd>
-                            <textarea class="form-control" id="textarea" rows="3"></textarea>
+                            <textarea class="form-control" name="description" id="description" rows="3"></textarea>
                             <small class="form-text textError"></small>
                         </dd>
                     </dl>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <ul class="btnList">
+                        <li><a href="{{ route('index') }}" class="btn btn-light">Back</a></li>
+                        <li><input type="submit" class="btn btn-primary" value="Submit"/></li>
+                    </ul>
                 </form>
 
             </div>

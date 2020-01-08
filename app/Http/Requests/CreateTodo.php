@@ -24,7 +24,16 @@ class CreateTodo extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
+            'title' => 'required|max:20',
+            'description' => 'required',
+        ];
+    }
+
+    // validation text
+    public function attributes() {
+        return [
+            'title' => 'タイトル',
+            'description' => '内容',
         ];
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Todo;
 use App\User;
+use App\Http\Requests\CreateTodo;
 use Illuminate\Http\Request;
 
 class TodoController extends Controller
@@ -35,7 +36,7 @@ class TodoController extends Controller
         return view('create');
     }
 
-    public function create(Request $request)
+    public function create(CreateTodo $request)
     {
         $todo = new Todo();
 
@@ -79,4 +80,5 @@ class TodoController extends Controller
     {
         //
     }
+    
 }
