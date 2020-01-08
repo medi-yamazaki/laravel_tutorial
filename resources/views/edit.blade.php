@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Todo　Create</title>
+        <title>Todo　Edit</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -30,16 +30,16 @@
 
             <div class="content todoContainer">
                 <div class="title m-b-md">
-                    Create
+                    Edit
                 </div>
 
-                <form action="{{ route('create') }}" method="POST" class="todoForm">
+                <form action="{{ route('edit', ['id' => $todo->id]) }}" method="POST" class="todoForm">
                     {{ csrf_field() }}
 
                     <dl class="formDl">
                         <dt>タイトル</dt>
                         <dd>
-                            <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}"/>
+                            <input type="text" class="form-control" id="title" name="title" value="{{ old('title') ?? $todo->title }}"/>
                             @error('title')
                             <small class="form-text textError">{{$message}}</small>
                             @enderror
@@ -47,10 +47,31 @@
 
                         <dt>内容</dt>
                         <dd>
-                            <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+                            <textarea class="form-control" name="description" id="description" rows="3">{{ old('description') ?? $todo->description }}</textarea>
                             <small class="form-text textError"></small>
                         </dd>
                     </dl>
+
+                    <div class="statusEdit">
+                        <dl>
+                            <dt>ステータス</dt>
+                            <dd>
+                                <div class="selectStatus">
+                                    <select class="form-control" name="status" id="status">
+                                        @foreach(\App\Todo::STATUS as $key => $val)
+                                            <option value="{{ $key }}"{{ $key == old('status', $todo->status) ? ' selected' : '' }}>{{ $val['label'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <ul class="dateStatus">
+                                    <li>作成日：{{ $todo->created_at->format("Y年m月d日 H:i") }}</li>
+                                    <li>更新日：{{ $todo->updated_at->format("Y年m月d日 H:i") }}</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </div>
+
                     <ul class="btnList">
                         <li><a href="{{ route('index') }}" class="btn btn-light">Back</a></li>
                         <li><input type="submit" class="btn btn-primary" value="Submit"/></li>

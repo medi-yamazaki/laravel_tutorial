@@ -11356,6 +11356,10 @@ a.text-dark:focus {
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   background-color: #fff;
@@ -11364,6 +11368,7 @@ body {
   font-weight: 200;
   font-size: 1.4rem;
   height: 100vh;
+  word-break: break-all;
   margin: 0;
 }
 
@@ -11375,6 +11380,14 @@ ol,
 ul,
 li {
   list-style: none;
+}
+
+a {
+  color: #2176bd;
+}
+
+a:hover {
+  color: #dc3545;
 }
 
 .full-height {
@@ -11452,6 +11465,7 @@ li {
 
 .todoForm .todoList li,
 .todoContent .todoList li {
+  width: 100%;
   display: -webkit-box;
   display: flex;
   -webkit-box-pack: start;
@@ -11463,7 +11477,7 @@ li {
   -webkit-box-align: start;
           align-items: flex-start;
   position: relative;
-  padding: 20px;
+  padding: 10px 20px;
 }
 
 .todoForm .todoList li:not(:last-of-type)::after,
@@ -11477,6 +11491,27 @@ li {
   border-bottom: 1px solid #e9ecef;
 }
 
+.todoForm .todoList li.new::before,
+.todoContent .todoList li.new::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+  border-left: 5px solid #2176bd;
+}
+
+.todoForm .todoList li.new dl dd,
+.todoContent .todoList li.new dl dd {
+  color: #2176bd;
+}
+
+.todoForm .todoList li.new dl dd .editLink a,
+.todoContent .todoList li.new dl dd .editLink a {
+  color: #22d4b0;
+}
+
 .todoForm .todoList li.doing::before,
 .todoContent .todoList li.doing::before {
   content: "";
@@ -11486,6 +11521,16 @@ li {
   bottom: 0;
   z-index: 0;
   border-left: 5px solid #dc3545;
+}
+
+.todoForm .todoList li.doing dl dd,
+.todoContent .todoList li.doing dl dd {
+  color: #dc3545;
+}
+
+.todoForm .todoList li.doing dl dd .editLink a,
+.todoContent .todoList li.doing dl dd .editLink a {
+  color: #22d4b0;
 }
 
 .todoForm .todoList li.done,
@@ -11505,8 +11550,88 @@ li {
   border-left: 5px solid #e9ecef;
 }
 
+.todoForm .todoList li.done a,
+.todoContent .todoList li.done a {
+  color: #bdc6cf;
+}
+
+.todoForm .todoList li dl,
+.todoContent .todoList li dl {
+  width: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: start;
+          justify-content: flex-start;
+  align-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-flow: row nowrap;
+  -webkit-box-align: start;
+          align-items: flex-start;
+  position: relative;
+  margin: 0 0 5px;
+  padding: 0;
+}
+
+.todoForm .todoList li dl dt,
+.todoContent .todoList li dl dt {
+  width: calc(100% - 100px);
+  padding: 0 20px 0 0;
+}
+
+.todoForm .todoList li dl dt a,
+.todoContent .todoList li dl dt a {
+  display: inline-block;
+  width: 100%;
+  color: #636b6f;
+}
+
+.todoForm .todoList li dl dd,
+.todoContent .todoList li dl dd {
+  width: 100px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: start;
+          justify-content: flex-start;
+  align-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-flow: row nowrap;
+  -webkit-box-align: start;
+          align-items: flex-start;
+  position: relative;
+  margin: 0 0 0px;
+  padding: 0;
+}
+
+.todoForm .todoList li dl dd .status,
+.todoContent .todoList li dl dd .status {
+  width: 50%;
+  padding: 0 10px 0 0;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.todoForm .todoList li dl dd .editLink,
+.todoContent .todoList li dl dd .editLink {
+  width: 50%;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.todoForm .todoList li .upDate,
+.todoContent .todoList li .upDate {
+  font-weight: normal;
+  font-size: 0.8rem;
+  display: inline-block;
+  width: 100%;
+  text-align: right;
+  color: #bdc6cf;
+}
+
 .todoForm .btnList,
 .todoContent .btnList {
+  width: 100%;
   display: -webkit-box;
   display: flex;
   -webkit-box-pack: center;
@@ -11518,7 +11643,6 @@ li {
   -webkit-box-align: start;
           align-items: flex-start;
   position: relative;
-  width: 100%;
   padding: 0 10px;
 }
 
@@ -11594,5 +11718,78 @@ li {
   padding: 10px;
   height: auto;
   font-size: 1.4rem;
+}
+
+.todoForm .statusEdit,
+.todoContent .statusEdit {
+  width: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: start;
+          justify-content: flex-start;
+  align-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-flow: row nowrap;
+  -webkit-box-align: start;
+          align-items: flex-start;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.todoForm .statusEdit dl,
+.todoContent .statusEdit dl {
+  width: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: start;
+          justify-content: flex-start;
+  align-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-flow: row nowrap;
+  -webkit-box-align: start;
+          align-items: flex-start;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.todoForm .statusEdit dl dt,
+.todoContent .statusEdit dl dt {
+  width: 120px;
+}
+
+.todoForm .statusEdit dl dd,
+.todoContent .statusEdit dl dd {
+  width: calc(100% - 120px);
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: start;
+          justify-content: flex-start;
+  align-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-flow: row nowrap;
+  -webkit-box-align: start;
+          align-items: flex-start;
+  margin: 0;
+  padding: 0;
+}
+
+.todoForm .statusEdit dl dd .selectStatus,
+.todoContent .statusEdit dl dd .selectStatus {
+  width: 100px;
+}
+
+.todoForm .statusEdit dl dd .dateStatus,
+.todoContent .statusEdit dl dd .dateStatus {
+  width: calc(100% - 100px);
+}
+
+.todoForm .statusEdit dl dd .dateStatus li,
+.todoContent .statusEdit dl dd .dateStatus li {
+  width: 100%;
+  font-size: 1.2rem;
 }
 

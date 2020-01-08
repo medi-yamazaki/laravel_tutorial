@@ -6,6 +6,15 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+$baseColor: #636b6f;
+$baseGray: #e9ecef;
+$baseBlue: #2176bd;
+$baseGreen: #22d4b0;
+$baseRed: #dc3545;
+
+* {
+    box-sizing: border-box;
+}
 html, body {
     background-color: #fff;
     color: #636b6f;
@@ -13,6 +22,7 @@ html, body {
     font-weight: 200;
     font-size: 1.4rem;
     height: 100vh;
+    word-break: break-all;
     margin: 0;
 }
 html {
@@ -20,6 +30,13 @@ html {
 }
 ol, ul, li {
 	list-style: none;
+}
+
+a {
+    color: $baseBlue;
+    &:hover {
+        color: $baseRed;
+    }
 }
 
 .full-height {
@@ -72,13 +89,26 @@ ol, ul, li {
     max-width: 500px;
 }
 
-$baseBC: #e9ecef;
-@mixin borderSet($type: all,$width: 1px,$style: solid,$color: $baseBC) {
+@mixin borderSet($type: all,$width: 1px,$style: solid,$color: $baseGray) {
     @if $type == all {
         border: $width $style $color;
     } @else {
         border-#{$type}: $width $style $color;
     }
+}
+
+@mixin flexSet($width: 100%,$justify: flex-start,$alignC: flex-start,$flow: row wrap,$alignI: flex-start) {
+    width: $width;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: $justify;
+    justify-content: $justify;
+    -webkit-align-content: $alignC;
+    align-content: $alignC;
+    -webkit-flex-flow: $flow;
+    flex-flow: $flow;
+    -webkit-align-items: $alignI;
+    align-items: $alignI;
 }
 
 .todoForm,.todoContent {
@@ -100,18 +130,10 @@ $baseBC: #e9ecef;
         @include borderSet;
 
         li {
-            display: -webkit-flex;
-            display: flex;
-            -webkit-justify-content: flex-start;
-            justify-content: flex-start;
-            -webkit-align-content: flex-start;
-            align-content: flex-start;
-            -webkit-flex-flow: row wrap;
-            flex-flow: row wrap;
-            -webkit-align-items: flex-start;
-            align-items: flex-start;
+            $liPaddingArg: 20px;
+            @include flexSet;
             position: relative;
-            padding: 20px;
+            padding: 10px $liPaddingArg;
             &:not(:last-of-type)::after {
                 content: "";
                 position: absolute;
@@ -121,17 +143,42 @@ $baseBC: #e9ecef;
                 z-index: 1;
                 @include borderSet($type: bottom);
             }
-            &.doing::before {
-                content: "";
-                position: absolute;
-                left: 0;
-                top: 0;
-                bottom: 0;
-                z-index: 0;
-                @include borderSet($type: left,$width: 5px,$color: #dc3545);
+            &.new {
+                &::before {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    bottom: 0;
+                    z-index: 0;
+                    @include borderSet($type: left,$width: 5px,$color: $baseBlue);
+                }
+                dl dd {
+                    color: $baseBlue;
+                    .editLink a {
+                        color: $baseGreen;
+                    }
+                }
+            }
+            &.doing {
+                &::before {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    bottom: 0;
+                    z-index: 0;
+                    @include borderSet($type: left,$width: 5px,$color: $baseRed);
+                }
+                dl dd {
+                    color: $baseRed;
+                    .editLink a {
+                        color: $baseGreen;
+                    }
+                }
             }
             &.done {
-                background: lighten($baseBC, 5%);
+                background: lighten($baseGray, 5%);
                 color: #ccc;
                 &::before {
                     content: "";
@@ -142,22 +189,62 @@ $baseBC: #e9ecef;
                     z-index: 0;
                     @include borderSet($type: left,$width: 5px);
                 }
+
+                a {
+                    color: darken($baseGray, 15%);
+                }
+            }
+
+            dl {
+                @include flexSet($flow: row nowrap);
+                position: relative;
+                margin: 0 0 5px;
+                padding: 0;
+
+                $statusW: 100px;
+                dt {
+                    width: calc(100% - #{$statusW});
+                    padding: 0 $liPaddingArg 0 0;
+                    a {
+                        display: inline-block;
+                        width: 100%;
+                        color: $baseColor;
+                    }
+
+                }
+                dd {
+                    @include flexSet($width: $statusW,$flow: row nowrap);
+                    position: relative;
+                    margin: 0 0 0px;
+                    padding: 0;
+
+                    .status {
+                        width: 50%;
+                        padding: 0 10px 0 0;
+                        font-size: 1.2rem;
+                        text-align: center;
+                    }
+                    .editLink {
+                        width: 50%;
+                        font-size: 1.2rem;
+                        text-align: center;
+                    }
+                }
+            }
+
+            .upDate {
+                font-weight: normal;
+                font-size: 0.8rem;
+                display: inline-block;
+                width: 100%;
+                text-align: right;
+                color: darken($baseGray, 15%);
             }
         }
     }
     .btnList {
-        display: -webkit-flex;
-        display: flex;
-        -webkit-justify-content: center;
-        justify-content: center;
-        -webkit-align-content: flex-start;
-        align-content: flex-start;
-        -webkit-flex-flow: row nowrap;
-        flex-flow: row nowrap;
-        -webkit-align-items: flex-start;
-        align-items: flex-start;
+        @include flexSet($justify: center,$flow: row nowrap);
         position: relative;
-        width: 100%;
         padding: 0 10px;
 
         li {
@@ -167,7 +254,7 @@ $baseBC: #e9ecef;
                 margin-right: 10px;
             }
             .btn-light {
-                background: #e9ecef;
+                background: $baseGray;
             }
         }
     }
@@ -214,5 +301,41 @@ $baseBC: #e9ecef;
         padding: 10px;
         height: auto;
         font-size: 1.4rem;
+    }
+
+    .statusEdit {
+        @include flexSet($flow: row nowrap);
+        position: relative;
+        margin-bottom: $contentMB;
+
+        dl {
+            @include flexSet($flow: row nowrap);
+            margin: 0;
+            padding: 0;
+            position: relative;
+
+            $editStatusW: 120px;
+            dt {
+                width: $editStatusW;
+            }
+            dd {
+                @include flexSet($width: calc(100% - #{$editStatusW}),$flow: row nowrap);
+                margin: 0;
+                padding: 0;
+
+                $selectWidth: 100px;
+                .selectStatus {
+                    width: $selectWidth;
+                }
+
+                .dateStatus {
+                    width: calc(100% - #{$selectWidth});
+                    li {
+                        width: 100%;
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Todo;
 use App\User;
+use Carbon\Carbon;
 use App\Http\Requests\CreateTodo;
 use Illuminate\Http\Request;
 
@@ -53,9 +54,13 @@ class TodoController extends Controller
      * @param  \App\Todo  $todo
      * @return \Illuminate\Http\Response
      */
-    public function show(Todo $todo)
+    public function show(int $todo_id)
     {
-        //
+        //DB Users
+        $todo = Todo::find($todo_id);
+        return view('edit', [
+            'todo' => $todo,
+        ]);
     }
 
     /**
@@ -65,9 +70,15 @@ class TodoController extends Controller
      * @param  \App\Todo  $todo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Todo $todo)
+    public function edit(CreateTodo $request, int $todo_id)
     {
-        //
+        $todo = Todo::find($todo_id);
+        $todo->title = $request->title;
+        $todo->description = $request->description;
+        $todo->status = $request->status;
+        $request->session()->regenerateToken();
+        $todo->save();
+        return redirect()->route('index');
     }
 
     /**
@@ -80,5 +91,5 @@ class TodoController extends Controller
     {
         //
     }
-    
+
 }
