@@ -71,12 +71,21 @@ ol, ul, li {
     max-width: 500px;
 }
 
+$baseBC: #e9ecef;
+@mixin borderSet($type: all,$width: 1px,$style: solid,$color: $baseBC) {
+    @if $type == all {
+        border: $width $style $color;
+    } @else {
+        border-#{$type}: $width $style $color;
+    }
+}
 
-.todoForm {
+.todoForm,.todoContent {
     $contentMB: 40px;
     .emptyTxt {
         width: 100%;
         margin: 0 auto $contentMB;
+        text-align: center;
     }
     .todoList {
         display: inline-block;
@@ -85,6 +94,9 @@ ol, ul, li {
         position: relative;
         width: 100%;
         text-align: left;
+        overflow: hidden;
+        border-radius: 3px;
+        @include borderSet;
 
         li {
             display: -webkit-flex;
@@ -98,9 +110,37 @@ ol, ul, li {
             -webkit-align-items: flex-start;
             align-items: flex-start;
             position: relative;
-            padding: 0 0 0 20px;
-            &:not(:last-of-type) {
-                margin-bottom: 10px;
+            padding: 20px;
+            &:not(:last-of-type)::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 1;
+                @include borderSet($type: bottom);
+            }
+            &.doing::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                z-index: 0;
+                @include borderSet($type: left,$width: 5px,$color: #dc3545);
+            }
+            &.done {
+                background: lighten($baseBC, 5%);
+                color: #ccc;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    bottom: 0;
+                    z-index: 0;
+                    @include borderSet($type: left,$width: 5px);
+                }
             }
         }
     }
@@ -167,5 +207,11 @@ ol, ul, li {
         &.textError {
             color: #f00;
         }
+    }
+
+    .form-control {
+        padding: 10px;
+        height: auto;
+        font-size: 1.4rem;
     }
 }

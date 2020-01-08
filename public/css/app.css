@@ -11429,21 +11429,28 @@ li {
   max-width: 500px;
 }
 
-.todoForm .emptyTxt {
+.todoForm .emptyTxt,
+.todoContent .emptyTxt {
   width: 100%;
   margin: 0 auto 40px;
+  text-align: center;
 }
 
-.todoForm .todoList {
+.todoForm .todoList,
+.todoContent .todoList {
   display: inline-block;
   margin: 0 auto 40px;
   padding: 0;
   position: relative;
   width: 100%;
   text-align: left;
+  overflow: hidden;
+  border-radius: 3px;
+  border: 1px solid #e9ecef;
 }
 
-.todoForm .todoList li {
+.todoForm .todoList li,
+.todoContent .todoList li {
   display: -webkit-box;
   display: flex;
   -webkit-box-pack: start;
@@ -11455,14 +11462,50 @@ li {
   -webkit-box-align: start;
           align-items: flex-start;
   position: relative;
-  padding: 0 0 0 20px;
+  padding: 20px;
 }
 
-.todoForm .todoList li:not(:last-of-type) {
-  margin-bottom: 10px;
+.todoForm .todoList li:not(:last-of-type)::after,
+.todoContent .todoList li:not(:last-of-type)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  border-bottom: 1px solid #e9ecef;
 }
 
-.todoForm .btnList {
+.todoForm .todoList li.doing::before,
+.todoContent .todoList li.doing::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+  border-left: 5px solid #dc3545;
+}
+
+.todoForm .todoList li.done,
+.todoContent .todoList li.done {
+  background: #f8f9fa;
+  color: #ccc;
+}
+
+.todoForm .todoList li.done::before,
+.todoContent .todoList li.done::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+  border-left: 5px solid #e9ecef;
+}
+
+.todoForm .btnList,
+.todoContent .btnList {
   display: -webkit-box;
   display: flex;
   -webkit-box-pack: center;
@@ -11478,20 +11521,24 @@ li {
   padding: 0 10px;
 }
 
-.todoForm .btnList li {
+.todoForm .btnList li,
+.todoContent .btnList li {
   width: auto;
   min-width: 100px;
 }
 
-.todoForm .btnList li:not(:last-of-type) {
+.todoForm .btnList li:not(:last-of-type),
+.todoContent .btnList li:not(:last-of-type) {
   margin-right: 10px;
 }
 
-.todoForm .btnList li .btn-light {
+.todoForm .btnList li .btn-light,
+.todoContent .btnList li .btn-light {
   background: #e9ecef;
 }
 
-.todoForm .form-check-input {
+.todoForm .form-check-input,
+.todoContent .form-check-input {
   width: 14px;
   height: 14px;
   top: 50%;
@@ -11500,36 +11547,51 @@ li {
   margin-left: 0;
 }
 
-.todoForm .form-check-label {
+.todoForm .form-check-label,
+.todoContent .form-check-label {
   line-height: 1.3;
 }
 
-.todoForm .btn {
+.todoForm .btn,
+.todoContent .btn {
   font-size: 1.4rem;
   min-width: 100px;
 }
 
-.todoForm .formDl {
+.todoForm .formDl,
+.todoContent .formDl {
   margin-bottom: 40px;
 }
 
-.todoForm .formDl dt:not(:last-of-type) {
+.todoForm .formDl dt:not(:last-of-type),
+.todoContent .formDl dt:not(:last-of-type) {
   margin-bottom: 5px;
 }
 
-.todoForm .formDl dd:not(:last-of-type) {
+.todoForm .formDl dd:not(:last-of-type),
+.todoContent .formDl dd:not(:last-of-type) {
   margin-bottom: 20px;
 }
 
-.todoForm .formDl dd:last-of-type {
+.todoForm .formDl dd:last-of-type,
+.todoContent .formDl dd:last-of-type {
   margin-bottom: 0px;
 }
 
-.todoForm .form-text {
+.todoForm .form-text,
+.todoContent .form-text {
   margin-top: 5px;
 }
 
-.todoForm .form-text.textError {
+.todoForm .form-text.textError,
+.todoContent .form-text.textError {
   color: #f00;
+}
+
+.todoForm .form-control,
+.todoContent .form-control {
+  padding: 10px;
+  height: auto;
+  font-size: 1.4rem;
 }
 

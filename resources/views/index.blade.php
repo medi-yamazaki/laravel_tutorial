@@ -40,9 +40,8 @@
                     @if (count($todos) != 0)
                         <ul class="todoList">
                             @foreach ($todos as $todo)
-                            <li>
-                                <input type="checkbox" class="form-check-input" id="exampleCheck{{$todo->user_id}}">
-                                <label class="form-check-label" for="exampleCheck{{$todo->user_id}}">{{$todo->title}}</label>
+                            <li class="{{$todo->status == 0 ? 'doing' : 'done'}}">
+                                <span>{{$todo->title}}</span>
                             </li>
                             @endforeach
                         </ul>
