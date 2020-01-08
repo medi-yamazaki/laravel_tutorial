@@ -75,6 +75,7 @@
                     <ul class="btnList">
                         <li><a href="{{ route('index') }}" class="btn btn-light">Back</a></li>
                         <li><input type="submit" class="btn btn-primary" value="Submit"/></li>
+                        <li><input type="submit" name="destroy" class="btn btn-danger" value="Delete"/></li>
                     </ul>
                 </form>
 

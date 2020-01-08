@@ -73,11 +73,15 @@ class TodoController extends Controller
     public function edit(CreateTodo $request, int $todo_id)
     {
         $todo = Todo::find($todo_id);
-        $todo->title = $request->title;
-        $todo->description = $request->description;
-        $todo->status = $request->status;
-        $request->session()->regenerateToken();
-        $todo->save();
+        if($request->input('destroy')) {
+            $this->destroy($todo_id);
+        } else {
+            $todo->title = $request->title;
+            $todo->description = $request->description;
+            $todo->status = $request->status;
+            $request->session()->regenerateToken();
+            $todo->save();
+        }
         return redirect()->route('index');
     }
 
@@ -87,9 +91,10 @@ class TodoController extends Controller
      * @param  \App\Todo  $todo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Todo $todo)
+    public function destroy(int $todo_id)
     {
-        //
+        $todo = Todo::findOrFail($todo_id);
+        $todo->delete();
     }
 
 }
