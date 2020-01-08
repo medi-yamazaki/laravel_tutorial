@@ -37,15 +37,18 @@
                     <!-- @foreach ($users as $user)
                         {{ $user->name }}
                     @endforeach -->
-
-                    <ul class="todoList">
-                        @foreach ($todos as $todo)
-                        <li>
-                            <input type="checkbox" class="form-check-input" id="exampleCheck{{$todo->user_id}}">
-                            <label class="form-check-label" for="exampleCheck{{$todo->user_id}}">{{$todo->title}}</label>
-                        </li>
-                        @endforeach
-                    </ul>
+                    @if (count($todos) != 0)
+                        <ul class="todoList">
+                            @foreach ($todos as $todo)
+                            <li>
+                                <input type="checkbox" class="form-check-input" id="exampleCheck{{$todo->user_id}}">
+                                <label class="form-check-label" for="exampleCheck{{$todo->user_id}}">{{$todo->title}}</label>
+                            </li>
+                            @endforeach
+                        </ul>
+                    @else
+                        <p class="emptyTxt">表示するTodoリストはありません</p>
+                    @endif
                     <a href="/create" class="btn btn-primary">Create</a>
                 </form>
 

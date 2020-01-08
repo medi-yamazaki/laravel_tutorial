@@ -41,6 +41,7 @@ class TodoController extends Controller
 
         $todo->title = $request->title;
         $todo->description = $request->description;
+        $request->session()->regenerateToken();
         $todo->save();
         return redirect()->route('index');
     }

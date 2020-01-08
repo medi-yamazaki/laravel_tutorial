@@ -11429,6 +11429,11 @@ li {
   max-width: 500px;
 }
 
+.todoForm .emptyTxt {
+  width: 100%;
+  margin: 0 auto 40px;
+}
+
 .todoForm .todoList {
   display: inline-block;
   margin: 0 auto 40px;
@@ -11455,6 +11460,35 @@ li {
 
 .todoForm .todoList li:not(:last-of-type) {
   margin-bottom: 10px;
+}
+
+.todoForm .btnList {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  align-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-flow: row nowrap;
+  -webkit-box-align: start;
+          align-items: flex-start;
+  position: relative;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.todoForm .btnList li {
+  width: auto;
+  min-width: 100px;
+}
+
+.todoForm .btnList li:not(:last-of-type) {
+  margin-right: 10px;
+}
+
+.todoForm .btnList li .btn-light {
+  background: #e9ecef;
 }
 
 .todoForm .form-check-input {

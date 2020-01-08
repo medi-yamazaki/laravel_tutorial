@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFoldersTable extends Migration
+class CreateTodosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,12 +17,12 @@ class CreateFoldersTable extends Migration
             $table->bigIncrements('id');
             $table->string('title', 20);
             $table->text('description');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            // $table->integer('user_id')->unsigned();
+            // $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
- 
+
     /**
      * Reverse the migrations.
      *

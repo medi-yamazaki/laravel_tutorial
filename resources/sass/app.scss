@@ -71,8 +71,13 @@ ol, ul, li {
     max-width: 500px;
 }
 
+
 .todoForm {
     $contentMB: 40px;
+    .emptyTxt {
+        width: 100%;
+        margin: 0 auto $contentMB;
+    }
     .todoList {
         display: inline-block;
         margin: 0 auto $contentMB;
@@ -96,6 +101,32 @@ ol, ul, li {
             padding: 0 0 0 20px;
             &:not(:last-of-type) {
                 margin-bottom: 10px;
+            }
+        }
+    }
+    .btnList {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-align-content: flex-start;
+        align-content: flex-start;
+        -webkit-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+        -webkit-align-items: flex-start;
+        align-items: flex-start;
+        position: relative;
+        width: 100%;
+        padding: 0 10px;
+
+        li {
+            width: auto;
+            min-width: 100px;
+            &:not(:last-of-type) {
+                margin-right: 10px;
+            }
+            .btn-light {
+                background: #e9ecef;
             }
         }
     }
