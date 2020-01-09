@@ -10,12 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/', 'TodoController@index')->name('index');
+    Route::get('/create', 'TodoController@store')->name('create');
+    Route::post('/create', 'TodoController@create');
+    Route::get('/edit/{id}', 'TodoController@show')->name('edit');
+    Route::post('/edit/{id}', 'TodoController@edit');
 
-Route::get('/', 'TodoController@index')->name('index');
-Route::get('/create', 'TodoController@store')->name('create');
-Route::post('/create', 'TodoController@create');
-Route::get('/edit/{id}', 'TodoController@show')->name('edit');
-Route::post('/edit/{id}', 'TodoController@edit');
-Route::get('/login', function () {
-    return view('login');
+    Route::get('/home', 'HomeController@index')->name('home');
 });
+
+Auth::routes(['verify' => true]);
