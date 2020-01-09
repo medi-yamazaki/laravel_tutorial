@@ -17,7 +17,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/edit/{id}', 'TodoController@show')->name('edit');
     Route::post('/edit/{id}', 'TodoController@edit');
 
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/login', 'LoginController@index')->name('login');
 });
 
 Auth::routes(['verify' => true]);

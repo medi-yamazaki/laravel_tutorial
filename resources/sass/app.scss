@@ -65,6 +65,8 @@ a {
 
 .title {
     font-size: 84px;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
 .links > a {
@@ -77,16 +79,17 @@ a {
     text-transform: uppercase;
 }
 
-.m-b-md {
-    margin-bottom: 30px;
-}
-
-.todoContainer {
+.todoMain {
     display: block;
     margin: 0 auto;
     padding: 0 0 40px;
     width: 100%;
     max-width: 500px;
+}
+.LoginMain {
+    margin: 0 auto;
+    padding: 30px 0 40px;
+    width: 100%;
 }
 
 @mixin borderSet($type: all,$width: 1px,$style: solid,$color: $baseGray) {

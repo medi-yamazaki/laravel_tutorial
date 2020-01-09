@@ -12,7 +12,7 @@
     <dl class="formDl">
         <dt>タイトル</dt>
         <dd>
-            <input type="text" class="form-control" id="title" name="title" value="{{ old('title') ?? $todo->title }}"/>
+            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title') ?? $todo->title }}"/>
             @error('title')
             <small class="form-text textError">{{$message}}</small>
             @enderror

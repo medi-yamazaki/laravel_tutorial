@@ -34,6 +34,8 @@
     @else
         <p class="emptyTxt">表示するTodoリストはありません</p>
     @endif
-    <a href="/create" class="btn btn-primary">Create</a>
+    <ul class="btnList">
+        <li><a href="/create" class="btn btn-primary">Create</a></li>
+    </ul>
 </form>
 @endsection
