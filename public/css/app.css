@@ -11447,6 +11447,12 @@ a:hover {
   width: 100%;
 }
 
+.form-control {
+  padding: 10px;
+  height: auto;
+  font-size: 1.4rem;
+}
+
 .todoForm .emptyTxt,
 .todoContent .emptyTxt {
   width: 100%;
@@ -11717,13 +11723,6 @@ a:hover {
   color: #f00;
 }
 
-.todoForm .form-control,
-.todoContent .form-control {
-  padding: 10px;
-  height: auto;
-  font-size: 1.4rem;
-}
-
 .todoForm .statusEdit,
 .todoContent .statusEdit {
   width: 100%;
@@ -11795,5 +11794,37 @@ a:hover {
 .todoContent .statusEdit dl dd .dateStatus li {
   width: 100%;
   font-size: 1.2rem;
+}
+
+.searchForm ul {
+  padding: 0;
+  margin: 0 0 20px;
+  width: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: start;
+          justify-content: flex-start;
+  align-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-flow: row wrap;
+  -webkit-box-align: stretch;
+          align-items: stretch;
+}
+
+.searchForm ul li:first-of-type {
+  margin: 0 10px 0 0;
+  width: calc((100% - 10px) - 80px);
+}
+
+.searchForm ul li:last-of-type {
+  margin: 0;
+  width: 80px;
+}
+
+.searchForm ul li:last-of-type .btn {
+  width: 100%;
+  height: 100%;
+  font-size: 1.4rem;
 }
 

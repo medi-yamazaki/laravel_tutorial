@@ -5,6 +5,14 @@
 <div class="title m-b-md">
     Todo
 </div>
+<form method="POST" action="{{ route('index') }}" class="searchForm">
+    {{ csrf_field() }}
+
+    <ul>
+        <li><input type="text" class="form-control" id="description" name="description" value="{{ $keyword }}"/></li>
+        <li><input type="submit" class="btn btn-primary" value="Sreach"/></li>
+    </ul>
+</form>
 
 <form class="todoForm">
     @if (count($todos) != 0)

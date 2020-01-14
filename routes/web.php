@@ -11,7 +11,9 @@
 |
 */
 Route::group(['middleware' => 'auth'], function() {
-    Route::get('/', 'TodoController@index')->name('index');
+    // Route::match(['get','post'],'/', 'TodoController@index')->name('index');
+    Route::get('/','TodoController@index')->name('index');
+    Route::post('/','TodoController@index')->name('index');
     Route::get('/create', 'TodoController@store')->name('create');
     Route::post('/create', 'TodoController@create');
     Route::get('/edit/{id}', 'TodoController@show')->name('edit');

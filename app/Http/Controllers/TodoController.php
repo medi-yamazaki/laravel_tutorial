@@ -25,14 +25,21 @@ class TodoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //DB Users
         $users = User::all();
-        $todos = Todo::all();
+        // $query = Todo::query();
+        // if(isset($request->description)) {
+        //     $qauery->where('description','like','%'.$request->description.'%');
+        // }
+        // $todo = $qauery->orderBy('created_at', 'desc')->get();
+        $todos = Todo::descriptionFilter($request->description)->orderBy('created_at', 'desc')->get();
+
         return view('index', [
             'users' => $users,
             'todos' => $todos,
+            'keyword' => $request->description,
         ]);
     }
 

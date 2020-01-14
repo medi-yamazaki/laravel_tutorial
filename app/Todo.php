@@ -23,4 +23,12 @@ class Todo extends Model
         if(!isset(self::STATUS[$status])) {return '';}
         return self::STATUS[$status]['class'];
     }
+
+    public function scopeDescriptionFilter($query, string $description = null) {
+        if(!isset($description)) {
+            return $query;
+        }
+        return $query->where('description','like','%'.$description.'%');
+    }
+
 }

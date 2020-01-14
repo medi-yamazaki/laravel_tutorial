@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
         DB::table('todos')->insert([
             'title' => 'test02 todo',
             'description' => 'test02aaaaamediwl.co.jp',
-            'user_id' => 2,
+            // 'user_id' => 2,
             'created_at' => null,
             'updated_at' => null,
         ]);
