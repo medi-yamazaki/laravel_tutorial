@@ -34,7 +34,8 @@ class TodoController extends Controller
         //     $qauery->where('description','like','%'.$request->description.'%');
         // }
         // $todo = $qauery->orderBy('created_at', 'desc')->get();
-        $todos = Todo::descriptionFilter($request->description)->orderBy('created_at', 'desc')->get();
+        $todos = Todo::descriptionFilter($request->description)->
+                orderBy('created_at', 'desc')->paginate(10)->appends($request->all());
 
         return view('index', [
             'users' => $users,

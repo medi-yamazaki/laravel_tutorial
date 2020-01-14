@@ -11828,3 +11828,19 @@ a:hover {
   font-size: 1.4rem;
 }
 
+.paginationContainer {
+  padding: 0;
+  margin: 0 auto 10px;
+  width: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  align-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-flow: row wrap;
+  -webkit-box-align: stretch;
+          align-items: stretch;
+}
+

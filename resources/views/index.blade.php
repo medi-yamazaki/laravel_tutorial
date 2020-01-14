@@ -16,6 +16,14 @@
 
 <form class="todoForm">
     @if (count($todos) != 0)
+
+        @if($todos->total() > $todos->perPage())
+        <div class="paginationContainer">
+            {{$todos->links()}}
+        </div>
+
+        @endif
+
         <ul class="todoList">
             @foreach ($todos as $todo)
             <li class="{{$todo->status_class}}">
@@ -42,8 +50,10 @@
     @else
         <p class="emptyTxt">表示するTodoリストはありません</p>
     @endif
+
     <ul class="btnList">
         <li><a href="/create" class="btn btn-primary">Create</a></li>
     </ul>
 </form>
+
 @endsection
