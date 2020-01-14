@@ -22,6 +22,9 @@
         <dd>
             <textarea class="form-control" name="description" id="description" rows="3">{{ old('description') ?? $todo->description }}</textarea>
             <small class="form-text textError"></small>
+            <div class="detailList">
+                <span class="name">作成者：{{ $todo->user->name }}</span>
+            </div>
         </dd>
     </dl>
 
@@ -35,6 +38,8 @@
                             <option value="{{ $key }}"{{ $key == old('status', $todo->status) ? ' selected' : '' }}>{{ $val['label'] }}</option>
                         @endforeach
                     </select>
+
+
                 </div>
 
                 <ul class="dateStatus">

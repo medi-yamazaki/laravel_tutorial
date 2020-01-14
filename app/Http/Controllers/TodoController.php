@@ -29,11 +29,6 @@ class TodoController extends Controller
     {
         //DB Users
         $users = User::all();
-        // $query = Todo::query();
-        // if(isset($request->description)) {
-        //     $qauery->where('description','like','%'.$request->description.'%');
-        // }
-        // $todo = $qauery->orderBy('created_at', 'desc')->get();
         $todos = Todo::descriptionFilter($request->description)->
                 orderBy('created_at', 'desc')->paginate(10)->appends($request->all());
 
@@ -58,9 +53,9 @@ class TodoController extends Controller
     public function create(CreateTodo $request)
     {
         $todo = new Todo();
-
         $todo->title = $request->title;
         $todo->description = $request->description;
+        $todo->user_id = $request->user()->id;
         $request->session()->regenerateToken();
         $todo->save();
         return redirect()->route('index');

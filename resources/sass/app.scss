@@ -241,14 +241,22 @@ a {
                 }
             }
 
-            .upDate {
-                font-weight: normal;
-                font-size: 0.8rem;
-                display: inline-block;
-                width: 100%;
-                text-align: right;
-                color: darken($baseGray, 15%);
-            }
+
+        }
+    }
+    .detailList {
+        @include flexSet($justify: flex-end,$flow: row nowrap);
+        .name,.upDate {
+            font-weight: normal;
+            font-size: 0.8rem;
+            display: inline-block;
+            width: auto;
+            text-align: right;
+            color: darken($baseGray, 15%);
+        }
+
+        span:not(:only-of-type):not(:last-of-type) {
+            margin-right: 10px;
         }
     }
     .btnList {

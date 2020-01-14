@@ -30,5 +30,8 @@ class Todo extends Model
         }
         return $query->where('description','like','%'.$description.'%');
     }
+    public function user() {
+        return $this->belongsto('App\User');
+    }
 
 }

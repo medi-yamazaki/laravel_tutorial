@@ -11629,14 +11629,36 @@ a:hover {
   text-align: center;
 }
 
-.todoForm .todoList li .upDate,
-.todoContent .todoList li .upDate {
+.todoForm .detailList,
+.todoContent .detailList {
+  width: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
+  align-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-flow: row nowrap;
+  -webkit-box-align: start;
+          align-items: flex-start;
+}
+
+.todoForm .detailList .name,
+.todoForm .detailList .upDate,
+.todoContent .detailList .name,
+.todoContent .detailList .upDate {
   font-weight: normal;
   font-size: 0.8rem;
   display: inline-block;
-  width: 100%;
+  width: auto;
   text-align: right;
   color: #bdc6cf;
+}
+
+.todoForm .detailList span:not(:only-of-type):not(:last-of-type),
+.todoContent .detailList span:not(:only-of-type):not(:last-of-type) {
+  margin-right: 10px;
 }
 
 .todoForm .btnList,

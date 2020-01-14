@@ -21,8 +21,8 @@
         <div class="paginationContainer">
             {{$todos->links()}}
         </div>
-
         @endif
+
 
         <ul class="todoList">
             @foreach ($todos as $todo)
@@ -37,13 +37,18 @@
                     <dd>
                         <div class="status">{{$todo->status_label}}</div>
                         <div class="editLink">
+                            @if(Auth::user()->id == $todo->user_id)
                             <a href="/edit/{{$todo->id}}">
                                 <span>Edit</span>
                             </a>
+                            @endif
                         </div>
                     </dd>
                 </dl>
-                <span class="upDate">最終更新日時：{{ $todo->updated_at->format("Y年m月d日 H:i") }}</span>
+                <div class="detailList">
+                    <span class="name">作成者：{{ $todo->user->name }}</span>
+                    <span class="upDate">最終更新日時：{{ $todo->updated_at->format("Y年m月d日 H:i") }}</span>
+                </div>
             </li>
             @endforeach
         </ul>

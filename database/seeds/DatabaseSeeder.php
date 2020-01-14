@@ -24,15 +24,15 @@ class DatabaseSeeder extends Seeder
         //         'updated_at' => null,
         //     ]);
         // }
-        DB::table('users')->insert([
-            'name' => 'test02',
-            'email' => 'test02@mediwl.co.jp',
-            'email_verified_at' => null,
-            'password' => 'bbbb',
-            'remember_token' => 'bbbb',
-            'created_at' => null,
-            'updated_at' => null,
-        ]);
+        // DB::table('users')->insert([
+        //     'name' => 'test',
+        //     'email' => 'test@a.com',
+        //     'email_verified_at' => null,
+        //     'password' => 'testuser',
+        //     'remember_token' => 'bbbb',
+        //     'created_at' => null,
+        //     'updated_at' => null,
+        // ]);
 
         DB::table('todos')->insert([
             'title' => 'test02 todo',
