@@ -8,12 +8,14 @@
 <form method="POST" action="{{ route('index') }}" id="myForm" class="searchForm">
     {{ csrf_field() }}
 
-    <ul>
+    <ul class="{{ isset($keyword) ? 'searchDesc' : '' }}">
         <li><input type="text" class="form-control" id="description" name="description" value="{{ $keyword }}"/></li>
         <li><input type="submit" class="btn btn-primary" id="submit" value="Sreach"/></li>
+        @if(isset($keyword))
+        <li><a href="{{ route('index') }}" class="btn btn-light">Back</a></li>
+        @endif
     </ul>
 </form>
-
 <form class="todoForm">
     @if (count($todos) != 0)
 

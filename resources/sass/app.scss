@@ -367,19 +367,33 @@ a {
         margin: 0 0 20px;
         @include flexSet ($alignI: stretch);
         $serachBtnW: 80px;
+        
+        &.searchDesc li:first-of-type {
+            width: calc((100% - 20px) - #{$serachBtnW} * 2);
+        }
+        &:not(.searchDesc) li:first-of-type {
+            width: calc((100% - 10px) - #{$serachBtnW});
+        }
+        
         li:first-of-type {
             margin: 0 10px 0 0;
-            width: calc((100% - 10px) - #{$serachBtnW});
+        }
+        &.searchDesc li:nth-of-type(2) {
+            width: $serachBtnW;
+            margin: 0 10px 0 0;
         }
         li:last-of-type {
             margin: 0;
             width: $serachBtnW;
 
-            .btn {
-                width: 100%;
-                height: 100%;
-                font-size: 1.4rem;
-            }
+        }
+        .btn {
+            width: 100%;
+            height: 100%;
+            font-size: 1.4rem;
+        }
+        .btn-light {
+            @include flexSet ($justify: center,$alignC: center,$alignI: center);
         }
     }
 }

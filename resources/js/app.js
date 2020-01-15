@@ -38,7 +38,6 @@ if(myForm != null) {
         submitBtn.disabled = true;// disabledにする
     });
 }
-
 if(deleteBtn != null) {
     deleteBtn.addEventListener('click', function(){
         setTimeout(function () {
@@ -46,3 +45,4 @@ if(deleteBtn != null) {
         },100);
     });
 }
+
