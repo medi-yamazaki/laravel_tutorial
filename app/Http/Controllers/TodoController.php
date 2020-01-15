@@ -7,7 +7,7 @@ use App\User;
 use Carbon\Carbon;
 use App\Http\Requests\CreateTodo;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class TodoController extends Controller
 {
     /**
@@ -29,9 +29,9 @@ class TodoController extends Controller
     {
         //DB Users
         $users = User::all();
+        $userID = Auth::id();
         $todos = Todo::descriptionFilter($request->description)->
-                orderBy('created_at', 'desc')->paginate(10)->appends($request->all());
-
+                orderBy('created_at', 'desc')->where('user_id', $userID)->paginate(10)->appends($request->all());
         return view('index', [
             'users' => $users,
             'todos' => $todos,
