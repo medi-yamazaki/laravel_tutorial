@@ -10,7 +10,7 @@
 
     <ul>
         <li><input type="text" class="form-control" id="description" name="description" value="{{ $keyword }}"/></li>
-        <li><input type="submit" class="btn btn-primary" value="Sreach"/></li>
+        <li><input type="submit" class="btn btn-primary" id="submit" value="Sreach"/></li>
     </ul>
 </form>
 
