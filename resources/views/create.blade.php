@@ -6,7 +6,7 @@
     Create
 </div>
 
-<form action="{{ route('create') }}" method="POST" class="todoForm">
+<form action="{{ route('create') }}" method="POST" id="myForm" class="todoForm">
     {{ csrf_field() }}
 
     <dl class="formDl">
@@ -26,7 +26,7 @@
     </dl>
     <ul class="btnList">
         <li><a href="{{ route('index') }}" class="btn btn-light">Back</a></li>
-        <li><input type="submit" class="btn btn-primary" value="Submit"/></li>
+        <li><input type="submit" class="btn btn-primary" id="submit" value="Submit"/></li>
     </ul>
 </form>
 @endsection

@@ -5,7 +5,7 @@
 <div class="title m-b-md">
     Todo
 </div>
-<form method="POST" action="{{ route('index') }}" class="searchForm">
+<form method="POST" action="{{ route('index') }}" id="myForm" class="searchForm">
     {{ csrf_field() }}
 
     <ul>

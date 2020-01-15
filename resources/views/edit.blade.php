@@ -6,7 +6,7 @@
     Edit
 </div>
 
-<form action="{{ route('edit', ['id' => $todo->id]) }}" method="POST" class="todoForm">
+<form action="{{ route('edit', ['id' => $todo->id]) }}" id="myForm" method="POST" class="todoForm">
     {{ csrf_field() }}
 
     <dl class="formDl">
@@ -52,8 +52,8 @@
 
     <ul class="btnList">
         <li><a href="{{ route('index') }}" class="btn btn-light">Back</a></li>
-        <li><input type="submit" class="btn btn-primary" value="Submit"/></li>
-        <li><input type="submit" name="destroy" class="btn btn-danger" value="Delete"/></li>
+        <li><input type="submit" class="btn btn-primary" id="submit" value="Submit"/></li>
+        <li><input type="submit" name="destroy" class="btn btn-danger" id="delete" value="Delete"/></li>
     </ul>
 </form>
 @endsection

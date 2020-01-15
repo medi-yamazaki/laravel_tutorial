@@ -30,3 +30,19 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+const submitBtn = document.getElementById('submit');
+const deleteBtn = document.getElementById('delete');
+const myForm = document.getElementById('myForm');
+if(myForm != null) {
+    myForm.addEventListener('submit', function(){
+        submitBtn.disabled = true;// disabledにする
+    });
+}
+
+if(deleteBtn != null) {
+    deleteBtn.addEventListener('click', function(){
+        setTimeout(function () {
+            deleteBtn.disabled = true;// disabledにする
+        },100);
+    });
+}
