@@ -7,6 +7,7 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 $baseColor: #636b6f;
+$baseCCC: #ccc;
 $baseGray: #e9ecef;
 $baseBlue: #2176bd;
 $baseGreen: #22d4b0;
@@ -188,7 +189,7 @@ a {
             }
             &.done {
                 background: lighten($baseGray, 5%);
-                color: #ccc;
+                color: $baseCCC;
                 &::before {
                     content: "";
                     position: absolute;
@@ -240,8 +241,6 @@ a {
                     }
                 }
             }
-
-
         }
     }
     .detailList {
@@ -293,7 +292,7 @@ a {
         min-width: 100px;
     }
 
-    .formDl {
+    .formDl,.detailDl {
         margin-bottom: $contentMB;
         dt:not(:last-of-type) {
             margin-bottom: 5px;
@@ -315,7 +314,7 @@ a {
     }
 
 
-    .statusEdit {
+    .statusEdit,.statusDetail {
         @include flexSet($flow: row nowrap);
         position: relative;
         margin-bottom: $contentMB;
@@ -338,6 +337,16 @@ a {
                 $selectWidth: 100px;
                 .selectStatus {
                     width: $selectWidth;
+
+                    &.new {
+                        color: $baseBlue;
+                    }
+                    &.doing {
+                        color: $baseRed;
+                    }
+                    &.done {
+                        color: $baseCCC;
+                    }
                 }
 
                 .dateStatus {

@@ -61,6 +61,15 @@ class TodoController extends Controller
         return redirect()->route('index');
     }
 
+    public function detail(int $todo_id)
+    {
+        //DB Users
+        $todo = Todo::find($todo_id);
+        return view('detail', [
+            'todo' => $todo,
+        ]);
+    }
+
     /**
      * Display the specified resource.
      *

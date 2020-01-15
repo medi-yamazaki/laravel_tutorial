@@ -29,7 +29,7 @@
             <li class="{{$todo->status_class}}">
                 <dl>
                     <dt>
-                        <a href="/edit/{{$todo->id}}">
+                        <a href="/detail/{{$todo->id}}">
                             <span>{{$todo->title}}</span>
                         </a>
 
